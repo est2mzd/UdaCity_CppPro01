@@ -1,0 +1,4 @@
+how to create shell.
+
+1. #!/bin/bash
+2. chmod 755 xxxx.sh
