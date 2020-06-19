@@ -33,6 +33,7 @@ public:
         std::vector<int> inner;
     };
     
+    // struct Building{ Multipolygon; }; 
     struct Building : Multipolygon {};
     
     struct Leisure : Multipolygon {};
@@ -46,8 +47,8 @@ public:
     
     Model( const std::vector<std::byte> &xml );
     
+    // noexcept -> function does not export "exception".
     auto MetricScale() const noexcept { return m_MetricScale; }    
-    
     auto &Nodes() const noexcept { return m_Nodes; }
     auto &Ways() const noexcept { return m_Ways; }
     auto &Roads() const noexcept { return m_Roads; }

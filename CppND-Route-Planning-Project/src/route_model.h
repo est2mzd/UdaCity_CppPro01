@@ -23,7 +23,9 @@ class RouteModel : public Model {
             return std::sqrt(std::pow((x - other.x), 2) + std::pow((y - other.y), 2));
         }
 
+        // constructor of this class
         Node(){}
+        // created variables => (1)Model::Node = node, (2)parent_model = search_model, (3)index = idx
         Node(int idx, RouteModel * search_model, Model::Node node) : Model::Node(node), parent_model(search_model), index(idx) {}
 
       private:
