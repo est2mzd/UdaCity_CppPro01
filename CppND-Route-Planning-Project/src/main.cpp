@@ -56,7 +56,7 @@ int main(int argc, const char **argv)
     
     // define vector
     std::vector<std::byte> osm_data;
- 
+
     // read osm file data into "data". type of "data" is std::vector<std::byte>
     if( osm_data.empty() && !osm_data_file.empty() ) {
         std::cout << "Reading OpenStreetMap data from the following file: " <<  osm_data_file << std::endl;
