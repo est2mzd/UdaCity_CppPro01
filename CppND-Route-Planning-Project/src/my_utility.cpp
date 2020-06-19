@@ -1,9 +1,14 @@
+#include "my_utility.h"
 #include <vector>
 #include <string>
 #include <sstream>
 #include <algorithm>
 
-using namespace std;
+using std::string;
+using std::vector;
+using std::stringstream;
+
+//using namespace std
 
 // Split Strings by delimiter
 vector<string> split(const string &s, char delimiter)

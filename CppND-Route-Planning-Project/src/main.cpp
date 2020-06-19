@@ -8,7 +8,7 @@
 #include "render.h"
 #include "route_planner.h"
 
-#include "my_utility.cpp"
+#include "my_utility.h"
 using std::cout;
 using std::cin;
 using std::string;
