@@ -7,4 +7,4 @@ using std::vector;
 
 vector<string> split(const string &s, char delimiter);
 
-#endif MY_UTILITY_H
+#endif// MY_UTILITY_H
