@@ -195,8 +195,8 @@ void RoutePlanner::AStarSearch() {
     int n_loop = 0;
     float diff_init = current_node->distance(*start_node);
 
-    while(this->open_list.size() > 0){
-  //while(n_loop < 20){    
+  //while(this->open_list.size() > 0){
+    while(n_loop < 200){    
         n_loop += 1;
         
         current_node = NextNode();
