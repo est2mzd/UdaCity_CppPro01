@@ -26,7 +26,7 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 // - Node objects have a distance method to determine the distance to another node.
 
 float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
-    //return ( abs(node->x - end_node->x) + abs(node->y - end_node->y)  );
+    // h_valie = distance from end_node
     return (this->end_node->distance(*node));
 }
 
@@ -55,7 +55,9 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     //
     for(RouteModel::Node* neighbor : current_node->neighbors){
         neighbor->parent  = current_node;
+        // h_valie = distance from end_node
         neighbor->h_value = CalculateHValue(neighbor);
+        // g_valie = distance from current_node
         neighbor->g_value = current_node->distance(*neighbor);
         neighbor->visited = true;
         this->open_list.push_back(neighbor);
@@ -81,8 +83,28 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Remove that node from the open_list.
 // - Return the pointer.
 
-RouteModel::Node *RoutePlanner::NextNode() {
+// My Function to compare F Value
+bool CompareFValue(const RouteModel::Node *a, const RouteModel::Node *b)
+{
+    int f1 = a->g_value + a->h_value; // f1 = g1 + h1
+    int f2 = b->g_value + b->g_value; // f2 = g2 + h2
+    return f1 > f2;
+}
 
+// My Function to sort open_list
+void *NodeSort(std::vector<RouteModel::Node *> *open_list)
+{
+    sort(open_list->begin(), open_list->end(), CompareFValue);
+}
+
+// Main Function of TODO 5
+RouteModel::Node *RoutePlanner::NextNode() {
+    // sort list with f value
+    NodeSort(&this->open_list);
+    // get pointer
+    RouteModel::Node* node_lowest = this->open_list.back();
+    // return
+    return node_lowest;
 }
 
 
