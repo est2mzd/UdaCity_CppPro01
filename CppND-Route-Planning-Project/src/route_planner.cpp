@@ -176,6 +176,7 @@ void RoutePlanner::AStarSearch() {
 
     // TODO: Implement your solution here.
     std::cout << "Start AStarSearch !" << "\n";
+    
     // add all of the neighbors of the current node to the open_list.
     AddNeighbors(current_node);
 
@@ -183,10 +184,10 @@ void RoutePlanner::AStarSearch() {
     int n_loop = 0;
 
     while(true){
-        if (flag_debug){
-            n_loop += 1;
-            std::cout << "  n_loop = " << n_loop << "\n";
-        }
+        //if (flag_debug){
+        n_loop += 1;
+        std::cout << "  n_loop = " << n_loop << "\n";
+        //}
         
         current_node = NextNode();
         int x = current_node->x;
