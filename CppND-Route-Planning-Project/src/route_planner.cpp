@@ -88,7 +88,8 @@ bool CompareFValue(const RouteModel::Node *a, const RouteModel::Node *b)
 {
     int f1 = a->g_value + a->h_value; // f1 = g1 + h1
     int f2 = b->g_value + b->h_value; // f2 = g2 + h2
-    return f1 > f2;
+    //return f1 > f2;
+    return f1 < f2;
 }
 
 // My Function to sort open_list
@@ -102,7 +103,7 @@ RouteModel::Node *RoutePlanner::NextNode() {
     // sort list with f value
     NodeSort(&this->open_list);
     // get pointer
-    RouteModel::Node* current = this->open_list.back();
+    RouteModel::Node* node_lowest = this->open_list.back();
 
 
     if (flag_debug){
@@ -119,7 +120,7 @@ RouteModel::Node *RoutePlanner::NextNode() {
     }
 
     // return
-    return current;
+    return node_lowest;
 }
 
 
