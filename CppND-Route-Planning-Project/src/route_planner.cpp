@@ -81,7 +81,7 @@ RouteModel::Node *RoutePlanner::NextNode() {
 
     // get pointer
     RouteModel::Node* node_lowest = this->open_list.back();
-
+    this->open_list.pop_back();
     // return
     return node_lowest;
 }
