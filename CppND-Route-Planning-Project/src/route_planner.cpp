@@ -102,9 +102,8 @@ RouteModel::Node *RoutePlanner::NextNode() {
     // sort list with f value
     NodeSort(&this->open_list);
     // get pointer
-    RouteModel::Node* node_lowest = this->open_list.back();
-    // return
-    return node_lowest;
+    RouteModel::Node* current = this->open_list.back();
+
 
     if (flag_debug){
         int num_node = 0;
@@ -119,7 +118,8 @@ RouteModel::Node *RoutePlanner::NextNode() {
         }
     }
 
-
+    // return
+    return current;
 }
 
 
