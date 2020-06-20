@@ -4,7 +4,7 @@
 
 using std::cout;
 
-bool flag_debug = true;
+bool flag_debug = false;
 
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
     // Convert inputs to percentage:
@@ -189,10 +189,11 @@ void RoutePlanner::AStarSearch() {
     std::cout << "Before while\n";
     int n_loop = 0;
     while(this->open_list.size() > 0){
-        //if (flag_debug){
         n_loop += 1;
-        std::cout << "  n_loop = " << n_loop << "\n";
-        //}
+
+        if (flag_debug){    
+            std::cout << "  n_loop = " << n_loop << "\n";
+        }
         
         current_node = NextNode();
         this->open_list.pop_back();
@@ -204,6 +205,10 @@ void RoutePlanner::AStarSearch() {
             break;
         }
         AddNeighbors(current_node);
+
+        std::cout << "while[" << n_loop << "]  ";
+        std::cout << "     current=[" << x << " , " << y << " ]";
+        std::cout << "     goal   =[" << this->end_node->x << " , " << this->end_node->y << " ]\n";
     }
     std::cout << "After while\n";
 }
