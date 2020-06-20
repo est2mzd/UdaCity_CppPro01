@@ -2,6 +2,8 @@
 #include <algorithm>
 #include "my_utility.cpp"
 
+bool flag_debug = true;
+
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
     // Convert inputs to percentage:
     start_x *= 0.01;
@@ -37,12 +39,30 @@ float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
     //
+    if (flag_debug){
+        std::cout << "AddNeighbors" << "\n";
+        std::cout << "< Current >"  << "\n";
+        std::cout << "   x = " << current_node->x; 
+        std::cout << "   y = " << current_node->y;
+        std::cout << "   h = " << current_node->h_value;
+        std::cout << "   g = " << current_node->g_value;
+    }
+    //
     for(RouteModel::Node* neighbor : current_node->neighbors){
-        neighbor->parent = current_node;
+        neighbor->parent  = current_node;
         neighbor->h_value = CalculateHValue(neighbor);
         neighbor->g_value = current_node->g_value + 1;
         neighbor->visited = true;
         this->open_list.push_back(neighbor);
+
+        if (flag_debug)
+        {
+            std::cout << "< neighbor >" << "\n";
+            std::cout << "   x = " << current_node->x;
+            std::cout << "   y = " << current_node->y;
+            std::cout << "   h = " << current_node->h_value;
+            std::cout << "   g = " << current_node->g_value;
+        }
     }
 }
 
