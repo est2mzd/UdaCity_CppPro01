@@ -93,15 +93,16 @@ bool CompareFValue(const RouteModel::Node *a, const RouteModel::Node *b)
 }
 
 // My Function to sort open_list
-void *NodeSort(std::vector<RouteModel::Node *> *open_list)
+void *NodeSort(std::vector<RouteModel::Node *> *open)
 {
-    sort(open_list->begin(), open_list->end(), CompareFValue);
+    sort(open->begin(), open->end(), CompareFValue);
 }
 
 // Main Function of TODO 5
 RouteModel::Node *RoutePlanner::NextNode() {
     // sort list with f value
     NodeSort(&this->open_list);
+
     // get pointer
     RouteModel::Node* node_lowest = this->open_list.back();
 
@@ -187,8 +188,10 @@ void RoutePlanner::AStarSearch() {
 
     //
     std::cout << "Before while\n";
+
     int n_loop = 0;
-    while(this->open_list.size() > 0){
+  //while(this->open_list.size() > 0){
+    while(n_loop < 20){    
         n_loop += 1;
 
         if (flag_debug){    
@@ -207,7 +210,7 @@ void RoutePlanner::AStarSearch() {
         AddNeighbors(current_node);
 
         std::cout << "while[" << n_loop << "]  ";
-        std::cout << "     current=[" << x << " , " << y << " ]";
+        std::cout << "     current=[" << x                 << " , " << y << " ]";
         std::cout << "     goal   =[" << this->end_node->x << " , " << this->end_node->y << " ]\n";
     }
     std::cout << "After while\n";
