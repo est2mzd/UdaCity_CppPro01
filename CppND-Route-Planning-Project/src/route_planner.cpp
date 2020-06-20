@@ -172,49 +172,21 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
 // - Store the final path in the m_Model.path attribute before the method exits. This path will then be displayed on the map tile.
 
 void RoutePlanner::AStarSearch() {
-    std::cout << "Start AStarSearch !" << "\n";
-
     // in the main(), initial points are already set by { start_x, start_y, end_x, end_y }.
     RouteModel::Node *current_node = nullptr;
 
     // TODO: Implement your solution here.
-    std::cout << "Intializing current_node\n";
-  //*current_node = *this->start_node;
     current_node = this->start_node;
     current_node->visited = true;
-    print_node_info(start_node  , "start node      : ", flag_debug);
-    print_node_info(end_node,     "end   node      : ", flag_debug);
-    print_node_info(current_node, "initial current : ", flag_debug);
-
-    // add all of the neighbors of the current node to the open_list.
-    std::cout << "AddNeighbors\n";
-    //AddNeighbors(current_node);
-
-    //
-    std::cout << "Before while\n";
-
-    int n_loop = 0;
-    float diff_init = current_node->distance(*start_node);
 
     while(this->open_list.size() > 0){
-  //while(n_loop < 200){    
-        n_loop += 1;
         AddNeighbors(current_node);
         current_node = NextNode();
-      //this->open_list.pop_back();
         
-        float diff_current = current_node->distance(*end_node);
-        float diff_ratio   = diff_current / diff_init * 100.0;
-        //
         if ((current_node->x == end_node->x) && (current_node->y == end_node->y))
         {
             m_Model.path = ConstructFinalPath(current_node);
             return;
         }
-        //AddNeighbors(current_node);
-
-        std::cout << "while[" << n_loop << "]  ";
-        print_node_info(current_node, "current : ", flag_debug);
     }
-    std::cout << "After while\n";
 }
