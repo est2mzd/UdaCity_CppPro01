@@ -4,6 +4,7 @@
 #include <sstream>
 #include <algorithm>
 
+using std::cout;
 using std::string;
 using std::vector;
 using std::stringstream;
@@ -33,7 +34,7 @@ void print_node_info(RouteModel::Node* node, string title, bool flag_debug){
     if (! flag_debug){
         return;
     }
-    
+
     if(! title.empty()){
         cout << title;
     }
