@@ -88,8 +88,8 @@ bool CompareFValue(const RouteModel::Node *a, const RouteModel::Node *b)
 {
     int f1 = a->g_value + a->h_value; // f1 = g1 + h1
     int f2 = b->g_value + b->h_value; // f2 = g2 + h2
-    //return f1 > f2;
-    return f1 < f2;
+    return f1 > f2;
+    //return f1 < f2;
 }
 
 // My Function to sort open_list
@@ -141,7 +141,8 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
     while(true){
         if (current_node->parent != nullptr){
             distance += current_node->distance(*current_node->parent);
-            path_found.push_back(*current_node);
+            //path_found.push_back(*current_node);
+            path_found.push_front(*current_node);
         }
         else{
             break;
