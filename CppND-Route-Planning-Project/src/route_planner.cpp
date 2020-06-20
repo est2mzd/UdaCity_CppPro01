@@ -63,11 +63,11 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
         if (flag_debug)
         {
             n_neighbors += 1;
-            cout << "< neighbor[" << n_neighbors << "]\n";
-            cout << "   x = " << current_node->x;
-            cout << "   y = " << current_node->y;
-            cout << "   h = " << current_node->h_value;
-            cout << "   g = " << current_node->g_value;
+            cout << "< neighbor[" << n_neighbors << "] >\n";
+            cout << "   x = " << neighbor->x;
+            cout << "   y = " << neighbor->y;
+            cout << "   h = " << neighbor->h_value;
+            cout << "   g = " << neighbor->g_value;
             cout << "\n";
         }
     }
