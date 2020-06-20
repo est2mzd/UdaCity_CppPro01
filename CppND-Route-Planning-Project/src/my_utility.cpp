@@ -31,9 +31,9 @@ vector<string> split(const string &s, char delimiter)
 #include "route_model.h"
 
 void print_node_info(RouteModel::Node* node, string title, bool flag_debug){
-    if (!(flag_debug)){
-        return;
-    }
+    // if (!(flag_debug)){
+    //     return;
+    // }
 
     if(!(title.empty())){
         cout << title;
