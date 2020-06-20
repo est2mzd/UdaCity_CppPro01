@@ -188,13 +188,15 @@ void RoutePlanner::AStarSearch() {
     //
     std::cout << "Before while\n";
     int n_loop = 0;
-    while(true){
+    while(this->open_list.size() > 0){
         //if (flag_debug){
         n_loop += 1;
         std::cout << "  n_loop = " << n_loop << "\n";
         //}
         
         current_node = NextNode();
+        this->open_list.pop_back();
+
         int x = current_node->x;
         int y = current_node->y;
         //
