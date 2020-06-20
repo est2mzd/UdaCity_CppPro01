@@ -193,7 +193,7 @@ void RoutePlanner::AStarSearch() {
     std::cout << "Before while\n";
 
     int n_loop = 0;
-    float diff_init = end_node->distance(*start_node);
+    float diff_init = current_node->distance(*start_node);
 
     while(this->open_list.size() > 0){
   //while(n_loop < 20){    
@@ -203,9 +203,9 @@ void RoutePlanner::AStarSearch() {
         this->open_list.pop_back();
         
         float diff_current = current_node->distance(*end_node);
-        float diff_ratio   = diff_current / diff_init;
+        float diff_ratio   = diff_current / diff_init * 100.0;
         //
-        if (diff_ratio > 0.99)
+        if (diff_ratio < 1.0)
         {
             break;
         }
