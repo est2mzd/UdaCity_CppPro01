@@ -63,8 +63,8 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // My Function to compare F Value
 bool CompareFValue(const RouteModel::Node *a, const RouteModel::Node *b)
 {
-    int f1 = a->g_value + a->h_value; // f1 = g1 + h1
-    int f2 = b->g_value + b->h_value; // f2 = g2 + h2
+    float f1 = a->g_value + a->h_value; // f1 = g1 + h1
+    float f2 = b->g_value + b->h_value; // f2 = g2 + h2
     return f1 > f2;
 }
 
@@ -80,10 +80,11 @@ RouteModel::Node *RoutePlanner::NextNode() {
     NodeSort(&this->open_list);
 
     // get pointer
-    RouteModel::Node* node_lowest = this->open_list.back();
+    RouteModel::Node* current = this->open_list.back();
     this->open_list.pop_back();
+
     // return
-    return node_lowest;
+    return current;
 }
 
 
