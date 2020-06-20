@@ -105,6 +105,21 @@ RouteModel::Node *RoutePlanner::NextNode() {
     RouteModel::Node* node_lowest = this->open_list.back();
     // return
     return node_lowest;
+
+    if (flag_debug){
+        int num_node = 0;
+        for (RouteModel::Node * node : open_list){
+            if (flag_debug)
+            {
+                num_node += 1;
+                cout << "< node[" << num_node << "] >\n";
+                cout << "   h = " << (node->h_value + node->g_value);
+                cout << "\n";
+            }
+        }
+    }
+
+
 }
 
 
