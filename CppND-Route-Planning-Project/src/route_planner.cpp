@@ -178,6 +178,7 @@ void RoutePlanner::AStarSearch() {
     // TODO: Implement your solution here.
     current_node = this->start_node;
     current_node->visited = true;
+    open_list.push_back(current_node);
 
     while(this->open_list.size() > 0){
         AddNeighbors(current_node);
