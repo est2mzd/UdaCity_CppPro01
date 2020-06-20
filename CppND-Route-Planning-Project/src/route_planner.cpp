@@ -2,6 +2,8 @@
 #include <algorithm>
 #include "my_utility.cpp"
 
+using std::cout;
+
 bool flag_debug = true;
 
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
@@ -40,13 +42,16 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
     //
     if (flag_debug){
-        std::cout << "AddNeighbors" << "\n";
-        std::cout << "< Current >"  << "\n";
-        std::cout << "   x = " << current_node->x; 
-        std::cout << "   y = " << current_node->y;
-        std::cout << "   h = " << current_node->h_value;
-        std::cout << "   g = " << current_node->g_value;
+        cout << "AddNeighbors" << "\n";
+        cout << "< Current >"  << "\n";
+        cout << "   x = " << current_node->x; 
+        cout << "   y = " << current_node->y;
+        cout << "   h = " << current_node->h_value;
+        cout << "   g = " << current_node->g_value ;
+        cout << "\n";
     }
+    //
+    int n_neighbors = 0;
     //
     for(RouteModel::Node* neighbor : current_node->neighbors){
         neighbor->parent  = current_node;
@@ -57,11 +62,13 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 
         if (flag_debug)
         {
-            std::cout << "< neighbor >" << "\n";
-            std::cout << "   x = " << current_node->x;
-            std::cout << "   y = " << current_node->y;
-            std::cout << "   h = " << current_node->h_value;
-            std::cout << "   g = " << current_node->g_value;
+            n_neighbors += 1;
+            cout << "< neighbor[" << n_neighbors << "]\n";
+            cout << "   x = " << current_node->x;
+            cout << "   y = " << current_node->y;
+            cout << "   h = " << current_node->h_value;
+            cout << "   g = " << current_node->g_value;
+            cout << "\n";
         }
     }
 }
