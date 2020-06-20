@@ -7,4 +7,6 @@ using std::vector;
 
 vector<string> split(const string &s, char delimiter);
 
+void print_node_info(RouteModel::Node *node, string title, bool flag_debug);
+
 #endif// MY_UTILITY_H
