@@ -178,7 +178,8 @@ void RoutePlanner::AStarSearch() {
 
     // TODO: Implement your solution here.
     std::cout << "Intializing current_node\n";
-    *current_node = *start_node;
+  //*current_node = *this->start_node;
+     current_node = this->start_node;
 
     // add all of the neighbors of the current node to the open_list.
     std::cout << "AddNeighbors\n";
