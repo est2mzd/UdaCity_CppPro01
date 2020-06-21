@@ -1,6 +1,6 @@
 #include "route_planner.h"
 #include <algorithm>
-#include "my_utility.cpp"
+#include "my_utility.h"
 
 using std::cout;
 
