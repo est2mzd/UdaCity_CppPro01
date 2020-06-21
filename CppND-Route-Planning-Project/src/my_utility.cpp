@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <iostream>
 
 using std::cout;
 using std::string;
